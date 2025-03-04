@@ -17,7 +17,7 @@ import com.example.nagoyameshi.service.UserService;
 public class AuthController {
 	private final UserService userService;    
     
-    public AuthController(UserService userService) {        
+	 public AuthController(UserService userService) {     
         this.userService = userService;        
     }    
     
@@ -33,7 +33,7 @@ public class AuthController {
     } 
 	
 	 @PostMapping("/signup")
-     public String signup(@ModelAttribute @Validated SignupForm signupForm, BindingResult bindingResult, RedirectAttributes redirectAttributes) {      
+	 public String signup(@ModelAttribute @Validated SignupForm signupForm, BindingResult bindingResult, RedirectAttributes redirectAttributes) {     
          // メールアドレスが登録済みであれば、BindingResultオブジェクトにエラー内容を追加する
          if (userService.isEmailRegistered(signupForm.getEmail())) {
              FieldError fieldError = new FieldError(bindingResult.getObjectName(), "email", "すでに登録済みのメールアドレスです。");
@@ -54,6 +54,5 @@ public class AuthController {
          redirectAttributes.addFlashAttribute("successMessage", "会員登録が完了しました。");
  
          return "redirect:/";
-     }  
-
+     }    
 }

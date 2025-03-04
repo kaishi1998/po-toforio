@@ -43,11 +43,11 @@ public class House {
      @Column(name = "phone_number")
      private String phoneNumber;
      
-     @Column(name = "category_id")
-     private String category_id;
+     @Column(name = "category")
+     private String category;
  
      @Column(name = "created_at", insertable = false, updatable = false)
-     private Timestamp createdAt;
+     private Timestamp createdId;
  
      @Column(name = "updated_at", insertable = false, updatable = false)
      private Timestamp updatedAt;

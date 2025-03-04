@@ -12,15 +12,15 @@
              <!-- ヘッダー -->
              <div th:replace="~{fragment :: header}"></div>
              
-             <main>
-                 <div class="container nagoyameshi-container pb-5">
-                     <div class="row justify-content-center">
-                         <nav class="my-3" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                             <ol class="breadcrumb mb-0">                        
-                                 <li class="breadcrumb-item"><a th:href="@{/}">ホーム</a></li>
-                                 <li class="breadcrumb-item active" aria-current="page">店舗一覧</li>
-                             </ol>
-                         </nav>         
+             <main>                                  
+                 	<div class="container nagoyameshi-container pb-5">
+                     	<div class="row justify-content-center">
+                     		<nav class="my-3" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                             	<ol class="breadcrumb mb-0">                        
+                                 	<li class="breadcrumb-item"><a th:href="@{/}">ホーム</a></li>
+                                 	<li class="breadcrumb-item active" aria-current="page">店舗一覧</li>
+                             	</ol>
+                         	</nav>         
              
                          <div class="col-xl-3 col-lg-4 col-md-12">               
                              <form method="get" th:action="@{/houses}" class="w-100 mb-3">
@@ -37,35 +37,15 @@
                                  <div class="card-body">
                                      <form method="get" th:action="@{/houses}" class="w-100">
                                          <div class="form-group mb-3">
-                                             <select class="form-control form-select" name="area">  
-                                                 <option value="" hidden>選択してください</option>   
-                                                 <optgroup label="#">                                      
-                                                     <option value="#" th:selected="${area == '#'}">#</option>
-                                                 </optgroup>                
-                                                 <optgroup label="麺">                                  
-                                                     <option value="ラーメン" th:selected="${area == 'ラーメン'}">ラーメン</option>                                                
-                                                     <option value="うどん" th:selected="${area == 'うどん'}">うどん</option>
-                                                     <option value="そうめん" th:selected="${area == 'そうめん'}">そうめん</option>
-                                                     <option value="パスタ" th:selected="${area == 'パスタ'}">パスタ</option>
-                                                     <option value="ちゃんぽんめん" th:selected="${area == 'ちゃんぽんめん'}">ちゃんぽんめん</option>
-                                                     <option value="担々麺" th:selected="${area == '担々麺'}">担々麺</option>
-                                                 </optgroup>
-                                                  <optgroup label="#">                                  
-                                                     <option value="#" th:selected="${area == '#'}">#</option>                                                
-                                                     <option value="#" th:selected="${area == '#'}">#</option>
-                                                     <option value="#" th:selected="${area == '#'}">#</option>
-                                                     <option value="#" th:selected="${area == '#'}">#</option>
-                                                     <option value="#" th:selected="${area == '#'}">#</option>
-                                                     <option value="#" th:selected="${area == '#'}">#</option>
-                                                 </optgroup>
-                                                  <optgroup label="#">                                  
-                                                     <option value="#" th:selected="${area == '#'}">#</option>                                                
-                                                     <option value="#" th:selected="${area == '#'}">#</option>
-                                                     <option value="#" th:selected="${area == '#'}">#</option>
-                                                     <option value="#" th:selected="${area == '#'}">#</option>
-                                                     <option value="#" th:selected="${area == '#'}">#</option>
-                                                     <option value="#" th:selected="${area == '#'}">#</option>
-                                                 </optgroup>
+                                             <select class="form-control form-select" name="category">  
+                                                 <option value="" hidden>選択してください</option>                                                
+                                                 </optgroup>                                                                                 
+                                                     <option value="ラーメン" th:selected="${category == 'categoryid1'}">ラーメン</option>                                                
+                                                     <option value="うどん" th:selected="${category == 'categoryid2'}">うどん</option>
+                                                     <option value="そうめん" th:selected="${category == 'categoryid3'}">そうめん</option>
+                                                     <option value="パスタ" th:selected="${category == 'categoryid4'}">パスタ</option>
+                                                     <option value="ちゃんぽんめん" th:selected="${category == 'categoryid5'}">ちゃんぽんめん</option>
+                                                     <option value="担々麺" th:selected="${category == 'categoryid6'}">担々麺</option>                                                                                              
                                                                                                                     
                                              </select> 
                                          </div>
@@ -83,14 +63,14 @@
                                  <div class="card-body">
                                      <form method="get" th:action="@{/houses}" class="w-100">
                                          <div class="form-group mb-3">    
-                                             <select class="form-control form-select" name="price">
-                                                 <option value="#" hidden>選択してください</option> 
-                                                 <option value="#" th:selected="${price == #}">#円以内</option>
-                                                 <option value="#" th:selected="${price == #}">#円以内</option>
-                                                 <option value="#" th:selected="${price == #}">#円以内</option>
-                                                 <option value="#" th:selected="${price == #}">#円以内</option>
-                                                 <option value="#" th:selected="${price == #}">#円以内</option>
-                                             </select>                                                                                
+                                         	<select class="form-control form-select" name="price">
+                                                 <option value="" hidden>選択してください</option> 
+                                                 <option value="1000" th:selected="${price == 1000}">1,000円以内</option>
+                                                 <option value="1500" th:selected="${price == 1500}">1500円以内</option>
+                                                 <option value="2000" th:selected="${price == 2000}">2000円以内</option>
+                                                 <option value="700" th:selected="${price == 700}">700円以内</option>
+                                                 <option value="800" th:selected="${price == 800}">800円以内</option>
+                                             </select>                                                                                    
                                          </div>
                                          <div class="form-group">
                                              <button type="submit" class="btn text-black shadow-sm w-100 nagoyameshi-btn">検索</button>
@@ -161,12 +141,12 @@
                          </div>
                      </div>
                  </div>  
+			 </div>
              </main>
              
              <!-- フッター -->
              <div th:replace="~{fragment :: footer}"></div>
-         </div>    
          
-         <div th:replace="~{fragment :: scripts}"></div>  
+        	 <div th:replace="~{fragment :: scripts}"></div>  
    </body>
  </html>

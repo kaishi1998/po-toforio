@@ -24,7 +24,7 @@ public class HouseController {
   
     @GetMapping
     public String index(@RequestParam(name = "keyword", required = false) String keyword,
-                        @RequestParam(name = "area", required = false) String area,
+                        @RequestParam(name = "category", required = false) String category,
                         @RequestParam(name = "price", required = false) Integer price,                        
                         @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
                         Model model) 
@@ -32,9 +32,9 @@ public class HouseController {
         Page<House> housePage;
                 
         if (keyword != null && !keyword.isEmpty()) {
-            housePage = houseRepository.findByNameLikeOrAddressLike("%" + keyword + "%", "%" + keyword + "%", pageable);
-        } else if (area != null && !area.isEmpty()) {
-            housePage = houseRepository.findByAddressLike("%" + area + "%", pageable);
+            housePage = houseRepository.findByNameLike( "%" + keyword + "%", pageable); //Likeは曖昧検索そのために％を入れる。
+        } else if (category != null ) {
+            housePage = houseRepository.findByCategory(category, pageable);
         } else if (price != null) {
             housePage = houseRepository.findByPriceLessThanEqual(price, pageable);
         } else {
@@ -43,7 +43,7 @@ public class HouseController {
         
         model.addAttribute("housePage", housePage);
         model.addAttribute("keyword", keyword);
-        model.addAttribute("area", area);
+        model.addAttribute("category", category);
         model.addAttribute("price", price);                              
         
         return "houses/index";
